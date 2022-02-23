@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "ShareCard",
+    "slug": "ShareCard",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo_1.png",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2d2c47"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo_1.png",
+        "backgroundColor": "#2d2c47"
+      },
+      "package": "com.anirudh.j.ShareCard"
+    },
+    "web": {
+      "favicon": "./assets/logo_1.png"
+    },
+    "plugins": [
+      "expo-document-picker"
+    ]
+  }
+}
