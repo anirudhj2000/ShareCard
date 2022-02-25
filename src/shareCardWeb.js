@@ -173,11 +173,41 @@ const ShareCardWeb = () => {
             updateCard();
         }
         else{
+            if(selected){
+                AddNewCardMedia();
+            }
             slideUpAnim = new Animated.Value(25);
             addNewCard();
             resetContent();
             setToggle(!toggle);
         }
+    }
+
+
+    const AddNewCardMedia = async() => {
+        let res = await UploadFile(file);
+        console.log(res);
+        const media = {
+            title : file.name,
+            url : res.Location,
+            size : file.size,
+        }
+
+        console.log("post data sheet",media)
+
+        const mediaBody = {
+            firstName:"Anirudh",
+            title : title,
+            media : media,
+            content : 'Files',
+            contentType :"media",
+            dateCreated : Date.now(),
+        
+        }
+
+        let res1 = await CreateMediaCard(mediaBody);
+        console.log(res1);
+        getCards();
     }
 
     const updateCard = async() => {
