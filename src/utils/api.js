@@ -49,14 +49,21 @@ export const DeleteCard = async(id) => {
 }
 
 export const UploadFile = async(file) => {
+    console.log("iasu",file);
     const formData = new FormData();
-        formData.append('file',file);
-        let res = await fetch(Config.backendUrlLocal+'/cards/uploadFile',{
-            method:'POST',
-            body :formData,
-        }).catch(error => {throw error});
-        res = await res.json();
-        console.log(res);
+
+    
+    for(var i=0;i<file.length;i++){
+        
+        formData.append('file',file[i]);
+    }
+    
+    let res = await fetch(Config.backendUrlLocal+'/cards/uploadFile',{
+        method:'POST',
+        body :formData,
+    }).catch(error => {throw error});
+    res = await res.json();
+    console.log(res);
     return res;
 }
 

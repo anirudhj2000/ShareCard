@@ -4,12 +4,8 @@
     "slug": "ShareCard",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo_1.png",
-    "splash": {
-      "image": "./assets/logo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#2d2c47"
-    },
+    "icon": "./assets/logo_4.png",
+    
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -21,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo_1.png",
+        "foregroundImage": "./assets/logo_4.png",
         "backgroundColor": "#2d2c47"
       },
       "package": "com.anirudh.j.ShareCard"
