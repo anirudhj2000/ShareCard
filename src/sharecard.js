@@ -9,6 +9,7 @@ import { Badge } from 'react-native-paper';
 import {GetCards,CreateCard,CreateMediaCard,DeleteCard,UploadFile, UpdateCard} from "./utils/api";
 import { RenderFileModal,RenderFile } from "./utils/fileCards";
 import {useFonts,SpaceMono_400Regular} from '@expo-google-fonts/space-mono';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -181,13 +182,14 @@ const ShareCard = () => {
     }
 
     const addNewCard = async() => {
+        const user  =  await AsyncStorage.getItem('User');
         const body = {
             firstName:"Anirudh",
             title : title,
             content : content,
             contentType :"text",
             dateCreated : Date.now(),
-        
+            user : user,
         }
         let res = await CreateCard(body);
         console.log("res1",res);

@@ -6,6 +6,7 @@ import Splash from './src/splash';
 import { Provider, DefaultTheme } from 'react-native-paper';
 import {useFonts,SpaceMono_400Regular} from '@expo-google-fonts/space-mono';
 import Navigation from './src/utils/Navigation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const theme = {
   ...DefaultTheme,
@@ -19,15 +20,20 @@ const theme = {
 
 
 export default function App() {
+
+  const getUser = async() => {
+    let user = await AsyncStorage.getItem('User');
+
+    return user;
+  }
+
   return (
      Platform.OS === 'android'?
         <Provider  theme={theme}>
-          <Navigation/>
+          {getUser() ? <Navigation/> : <ShareCard/>}
         </Provider>
         :
-        <Provider>
-          <ShareCard/>
-        </Provider>
+        null
   );
 }
 
