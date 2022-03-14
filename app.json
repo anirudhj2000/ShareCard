@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/logo_4.png",
         "backgroundColor": "#2d2c47"
       },
-      "package": "com.anirudh.j.ShareCard"
+      "package": "com.anirudh.j.sharecard"
     },
     "web": {
       "favicon": "./assets/logo_1.png"
