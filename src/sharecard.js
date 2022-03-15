@@ -189,7 +189,7 @@ const ShareCard = () => {
             content : content,
             contentType :"text",
             dateCreated : Date.now(),
-            user : user,
+            user : user, 
         }
         let res = await CreateCard(body);
         console.log("res1",res);

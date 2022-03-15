@@ -108,7 +108,7 @@ const Splash = (props) => {
                                 </TouchableOpacity>
                             </View>         */}
                     <View style={{flexDirection:'row',width:windowWidth*0.6,marginHorizontal:windowWidth*0.2,justifyContent:'center',marginVertical:'2.5%'}}>
-                                    <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',marginHorizontal:'2.5%',color:'#87e0b1'}}>Crafted with {'<3'} by</Text>
+                                    <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',marginHorizontal:'2.5%',color:'#87e0b1'}}>Crafted with 💖 by</Text>
                                     <TouchableOpacity onPress={() => {Linking.openURL('https://github.com/anirudhj2000')}}>
                                         <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',marginHorizontal:'2.5%',color:'#87e0b1',textDecorationLine:'underline'}}>Anirudh</Text>
                                     </TouchableOpacity>
