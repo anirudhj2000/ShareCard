@@ -13,9 +13,11 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const Splash = (props) => {
-    let [fontsLoaded] = useFonts({
+    let [fontsLoaded] =  useFonts({
         SpaceMono_400Regular,
       });
+
+    console.log("nlas",fontsLoaded);
 
     let fadeAnim = new Animated.Value(100);
     let opacity1 = new Animated.Value(0);
@@ -48,9 +50,10 @@ const Splash = (props) => {
     const manageResponse = async(response) => {
         if(response.type == "success"){
             console.log("success");
-            await setAccessToken(response.authentication.accessToken);
+            setAccessToken(response.authentication.accessToken);
             await AsyncStorage.setItem('User', response.authentication.accessToken);
             props.navigation.push('Sharecard');
+            alert(JSON.stringify(response));
         }
     }
 
@@ -64,7 +67,7 @@ const Splash = (props) => {
     useEffect(() => {
         console.log("Resposne=======================================Response");
         if(response && response.type === "success")
-            manageResponse(response)
+            manageResponse(response);
         
     },[response]);
 
@@ -94,8 +97,9 @@ const Splash = (props) => {
                 <View style={{width:'90%',marginHorizontal:'5%',marginTop:'10%',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
                             <Text style={{fontSize:20,fontFamily:'SpaceMono_400Regular',alignSelf:'center',color:'#87e0b1'}}>Welcome to Share Card!</Text>
                             <TouchableOpacity onPress={() => {promptAsync({showInRecents:true})}} style={{alignSelf:'center',justifyContent:'center',alignItems:'center',marginVertical:'5%'}}>
-                                <View style={{height:windowHeight*0.05,width:windowWidth*0.7,backgroundColor:'#ababba',borderRadius:8}}>
-
+                                <View style={{height:windowHeight*0.05,width:windowWidth*0.5,backgroundColor:'#fff',flexDirection:'row',justifyContent:'center',alignItems:'center',borderRadius:8}}>
+                                    <Image source={require('../assets/mdpi/btn_google_light_normal_mdpi.png')} style={{height:30,width:30,marginHorizontal:'5%'}} />
+                                    <Text style={{fontSize:14,color:'#ababab'}}>SIGN IN WITH GOOGLE</Text>
                                 </View>
                             </TouchableOpacity>
                             {/* <View style={{flexDirection:'row',width:windowWidth*0.8,marginHorizontal:windowWidth*0.1,justifyContent:'space-around',marginVertical:'2.5%'}}>
@@ -108,9 +112,9 @@ const Splash = (props) => {
                                 </TouchableOpacity>
                             </View>         */}
                     <View style={{flexDirection:'row',width:windowWidth*0.6,marginHorizontal:windowWidth*0.2,justifyContent:'center',marginVertical:'2.5%'}}>
-                                    <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',marginHorizontal:'2.5%',color:'#87e0b1'}}>Crafted with 💖 by</Text>
+                                    <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',marginHorizontal:'2.5%',color:'#87e0b1'}}>Crafted with {"<3"} by </Text>
                                     <TouchableOpacity onPress={() => {Linking.openURL('https://github.com/anirudhj2000')}}>
-                                        <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',marginHorizontal:'2.5%',color:'#87e0b1',textDecorationLine:'underline'}}>Anirudh</Text>
+                                        <Text style={{fontSize:14,fontFamily:'SpaceMono_400Regular',color:'#87e0b1',textDecorationLine:'underline'}}>Anirudh</Text>
                                     </TouchableOpacity>
                     </View>
                 </View>            

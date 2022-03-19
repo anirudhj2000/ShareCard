@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import {useState , useEffect } from "react";
-import {View,Dimensions,Text,Image,SafeAreaView,TextInput,ScrollView, Share,StyleSheet,TouchableOpacity,Modal,Animated,ToastAndroid,Platform,Linking} from 'react-native';
+import {View,Dimensions,Text,Image,SafeAreaView,TextInput,ScrollView, Share,StyleSheet,TouchableOpacity,Modal,Animated,ToastAndroid,Platform,Linking,BackHandler} from 'react-native';
 import cardContent from "./cardContent";
 import CardHeader from "./utils/cardHeader";
 import * as Clipboard from 'expo-clipboard';
@@ -36,6 +36,18 @@ const ShareCard = () => {
     let slideUpAnimUpload = useRef(new Animated.Value(1)).current;
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const slideUpAnim = useRef(new Animated.Value(20)).current;
+
+    function handleBackButtonClick() {
+        BackHandler.exitApp();
+        return true;
+      }
+    
+      useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+        return () => {
+          BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+        };
+      }, []);
 
     const getIcon = (type) => {
         console.log(type);
